@@ -1,0 +1,31 @@
+.taskItem {
+    margin-bottom: 10px;
+  }
+  
+  .taskItem input {
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .taskItem button {
+    padding: 5px 10px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .taskItem button:hover {
+    background-color: #0056b3;
+  }
+  
+  .taskItem div {
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }

@@ -1,6 +1,6 @@
-import React from "react";
 import { useState } from "react";
 import TaskItem from "../TaskItem/TaskItem";
+import "./TaskList.css"
 
 export default function TaskList() {
 
@@ -18,7 +18,7 @@ export default function TaskList() {
             <div className="taskListTitle">list</div>
 
             <div className="taskItemList">
-                {taskItemList.map((item, index) => (<React.Fragment key={index}>{item}</React.Fragment>))}
+                {taskItemList}
             </div>
             <button onClick={addTaskItem}>add TaskItem</button>
         </div>
