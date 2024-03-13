@@ -1,9 +1,9 @@
 import './App.css'
-import TaskList from './components/TaskList/TaskList'
+import Board from './components/Board/Board'
 
 function App() {
   return (
-    <TaskList />
+    <Board />
   )
 }
 
