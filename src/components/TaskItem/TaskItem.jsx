@@ -1,42 +1,37 @@
 import "./TaskItem.css";
-import { useState } from "react";
 
-export default function TaskItem() {
-    const [itemIsEditable, setitemIsEditable] = useState(true);
-    const [itemEntry, setItemEntry] = useState('');
+export default function TaskItem({ content, onSave, onDelete }) {
+    // Get passed a handle delete function from TaskList parent, that deletes TaskItem from TaskList and deletes from Database
+    // Get passed a handle save function from TaskList parent, that saves TaskItem in TaskList and updates/uploads to Database
+    // on focusout, save content to taskItemContent, then call passed save function
 
-    const handleInputChange = (event) => {
-        setItemEntry(event.target.value);
-    };
-
-    const handleSubmit = (event) => {
+    const handleOnSave = (event) => {
         event.preventDefault();
-        setitemIsEditable(false);
+        const saveContent = event.target.value;
+
+        if (saveContent == null || saveContent == "") {
+            onSave(null);
+        } else {
+            onSave(event.target.value);
+        }
     };
 
     return (
-        <div className="taskItem">
-            {!itemIsEditable ? (
-                <div>
-                    <div>{itemEntry}</div>
-                    <button
-                        onClick={() => {
-                            setitemIsEditable(true);
-                        }}
-                    >
-                        edit
-                    </button>
-                </div>
-            ) : (
-                <form onSubmit={handleSubmit}>
-                    <input
-                        name="itemEntry"
-                        type="text"
-                        value={itemEntry}
-                        onChange={handleInputChange}
-                        onBlur={handleSubmit}
-                    />
+        <div>
+            {content == null ? (
+                <form>
+                    <textarea
+                        autoFocus
+                        placeholder="Enter item here"
+                        onBlur={handleOnSave}
+                        defaultValue={content}
+                    ></textarea>
                 </form>
+            ) : (
+                <div>
+                    {content}
+                    <button onClick={onDelete}>Delete</button>
+                </div>
             )}
         </div>
     );
